@@ -1,1 +1,25 @@
 @import "tailwindcss";
+
+:root {
+  --primary-color: #7695ec;
+  --secondary-color: #47b960;
+  --tertiary-color: #ff5151;
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+}
+
+@layer utilities {
+  .bg-primary {
+    background-color: var(--primary-color);
+  }
+
+  .bg-secondary {
+    background-color: var(--secondary-color);
+  }
+
+  .bg-tertiary {
+    background-color: var(--tertiary-color);
+  }
+}
