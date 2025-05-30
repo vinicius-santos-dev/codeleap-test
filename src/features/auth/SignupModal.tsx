@@ -24,11 +24,13 @@ const SignupModal = () => {
     }
   };
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
+
   return (
     <Modal isOpen={isOpen}>
-      <h1 className="font-bold text-[22px] mb-6">
-        Welcome to CodeLeap network!
-      </h1>
+      <h1 className="mb-6">Welcome to CodeLeap network!</h1>
 
       <form onSubmit={handleSubmit}>
         <Input
@@ -36,7 +38,7 @@ const SignupModal = () => {
           id="username"
           placeholder="John doe"
           value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          onChange={handleInputChange}
           required
         />
         <div className="flex justify-end mt-4">
