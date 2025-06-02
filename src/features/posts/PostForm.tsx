@@ -1,7 +1,8 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
-import useUsername from "../auth/hooks/useUsername";
+
+import { useUsername } from "../context/useAuth";
 import usePosts from "./hooks/usePosts";
 
 const PostForm = () => {

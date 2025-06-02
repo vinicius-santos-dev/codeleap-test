@@ -2,7 +2,7 @@ import { useState, type ChangeEvent, type FormEvent } from "react";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Modal from "../../components/Modal";
-import useUsername from "./hooks/useUsername";
+import { useUsername } from "../context/useAuth";
 
 const SignupModal = () => {
   const { userName, saveUserName } = useUsername();

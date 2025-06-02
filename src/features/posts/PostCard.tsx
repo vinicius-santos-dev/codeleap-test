@@ -2,7 +2,7 @@ import { formatDistanceToNow } from "date-fns";
 import { useState } from "react";
 import editIcon from "../../assets/edit.svg";
 import deleteIcon from "../../assets/trash.svg";
-import useUsername from "../auth/hooks/useUsername";
+import { useUsername } from "../context/useAuth";
 import usePosts from "./hooks/usePosts";
 import DeleteModal from "./modals/DeleteModal";
 import EditModal from "./modals/EditModal";
