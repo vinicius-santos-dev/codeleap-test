@@ -10,7 +10,7 @@ const MainScreen = () => {
         </div>
       </header>
 
-      <div className="max-w-[800px] flex flex-col mx-auto mt-6 gap-6">
+      <div className="max-w-[800px] flex flex-col mx-auto p-6 gap-6">
         <PostForm />
         <PostCard />
       </div>

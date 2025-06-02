@@ -1,62 +1,76 @@
+import { formatDistanceToNow } from "date-fns";
 import { useState } from "react";
 import editIcon from "../../assets/edit.svg";
 import deleteIcon from "../../assets/trash.svg";
+import useUsername from "../auth/hooks/useUsername";
 import DeleteModal from "./DeleteModal";
 import EditModal from "./EditModal";
+import usePosts from "./hooks/usePosts";
 
 const PostCard = () => {
-  const [showEditModal, setShowEditModal] = useState(false);
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [editingPostId, setEditingPostId] = useState<number | null>(null);
+  const [deletingPostId, setDeletingPostId] = useState<number | null>(null);
+
+  const { userName } = useUsername();
+  const { posts } = usePosts();
 
   return (
-    <div className="rounded-2xl overflow-hidden flex flex-col">
-      <div className="h-[70px] flex justify-between items-center bg-primary text-white w-full p-6">
-        <h2>My First Post at CodeLeap Network!</h2>
+    <div className="space-y-6">
+      {posts.data?.results.map((post) => (
+        <div
+          key={post.id}
+          className="rounded-2xl overflow-hidden flex flex-col"
+        >
+          <div className="h-[70px] flex justify-between items-center bg-primary text-white w-full p-6">
+            <h2>{post.title}</h2>
 
-        <div className="flex items-center gap-6">
-          <img
-            src={deleteIcon}
-            alt="Delete"
-            className="cursor-pointer"
-            onClick={() => setShowDeleteModal(true)}
+            {userName === post.username && (
+              <div className="flex items-center gap-6">
+                <img
+                  src={deleteIcon}
+                  alt="Delete"
+                  className="cursor-pointer"
+                  onClick={() => setDeletingPostId(post.id)}
+                />
+                <img
+                  src={editIcon}
+                  alt="Edit"
+                  className="cursor-pointer"
+                  onClick={() => setEditingPostId(post.id)}
+                />
+              </div>
+            )}
+          </div>
+
+          <div className="p-6 rounded-bl-2xl rounded-br-2xl border border-t-[#7695ec] border-[#999999]">
+            <div className="mb-4 flex justify-between text-[#999999] text-[18px]">
+              <p className="font-bold">@{post.username}</p>
+
+              <p>
+                {formatDistanceToNow(new Date(post.created_datetime), {
+                  addSuffix: true,
+                })}
+              </p>
+            </div>
+
+            <p className="text-[18px] text-black">{post.content}</p>
+          </div>
+
+          <DeleteModal
+            isOpen={deletingPostId === post.id}
+            onClose={() => setDeletingPostId(null)}
+            postId={post.id}
           />
-          <img
-            src={editIcon}
-            alt="Edit"
-            className="cursor-pointer"
-            onClick={() => setShowEditModal(true)}
+
+          <EditModal
+            isOpen={editingPostId === post.id}
+            onClose={() => setEditingPostId(null)}
+            postId={post.id}
+            initialTitle={post.title}
+            initialContent={post.content}
           />
         </div>
-      </div>
-
-      <div className="p-6 rounded-bl-2xl rounded-br-2xl border border-t-[#7695ec] border-[#999999]">
-        <div className="mb-4 flex justify-between text-[#999999] text-[18px]">
-          <p className="font-bold">@Vinícius Santos</p>
-
-          <p>30 minutes ago</p>
-        </div>
-
-        <p className="text-[18px] text-black">
-          Curabitur suscipit suscipit tellus. Phasellus consectetuer vestibulum
-          elit. Pellentesque habitant morbi tristique senectus et netus et
-          malesuada fames ac turpis egestas. Maecenas egestas arcu quis ligula
-          mattis placerat. Duis vel nibh at velit scelerisque suscipit. <br />{" "}
-          <br />
-          Duis lobortis massa imperdiet quam. Aenean posuere, tortor sed cursus
-          feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis
-          lacus. Fusce a quam. Nullam vel sem. Nullam cursus lacinia erat.
-        </p>
-      </div>
-
-      <DeleteModal
-        isOpen={showDeleteModal}
-        onClose={() => setShowDeleteModal(false)}
-      />
-
-      <EditModal
-        isOpen={showEditModal}
-        onClose={() => setShowEditModal(false)}
-      />
+      ))}
     </div>
   );
 };
