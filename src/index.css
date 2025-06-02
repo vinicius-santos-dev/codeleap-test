@@ -6,13 +6,15 @@
   --tertiary-color: #ff5151;
 }
 
-html {
-  font-family: "Roboto", sans-serif;
-}
+@layer base {
 
-h1, h2 {
-  font-size: 22px;
-  font-weight: 700;
+  html {
+    font-family: "Roboto", sans-serif;
+  }
+  
+  h1, h2 {
+    @apply font-bold text-[22px];
+  }
 }
 
 @layer utilities {

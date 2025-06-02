@@ -3,9 +3,9 @@ import { useState } from "react";
 import editIcon from "../../assets/edit.svg";
 import deleteIcon from "../../assets/trash.svg";
 import useUsername from "../auth/hooks/useUsername";
-import DeleteModal from "./DeleteModal";
-import EditModal from "./EditModal";
 import usePosts from "./hooks/usePosts";
+import DeleteModal from "./modals/DeleteModal";
+import EditModal from "./modals/EditModal";
 
 const PostCard = () => {
   const [editingPostId, setEditingPostId] = useState<number | null>(null);

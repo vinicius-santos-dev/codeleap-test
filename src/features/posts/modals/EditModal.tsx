@@ -1,8 +1,8 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
-import Button from "../../components/Button";
-import Input from "../../components/Input";
-import Modal from "../../components/Modal";
-import usePosts from "./hooks/usePosts";
+import Button from "../../../components/Button";
+import Input from "../../../components/Input";
+import Modal from "../../../components/Modal";
+import usePosts from "../hooks/usePosts";
 
 interface EditModalProps {
   isOpen: boolean;

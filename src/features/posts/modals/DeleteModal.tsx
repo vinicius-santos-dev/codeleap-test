@@ -1,7 +1,7 @@
 import type { FormEvent } from "react";
-import Button from "../../components/Button";
-import Modal from "../../components/Modal";
-import usePosts from "./hooks/usePosts";
+import Button from "../../../components/Button";
+import Modal from "../../../components/Modal";
+import usePosts from "../hooks/usePosts";
 
 interface DeleteModalProps {
   isOpen: boolean;

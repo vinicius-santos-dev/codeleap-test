@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import type { CreatePostData, Post, PostsResponse, UpdatePostData } from "../types/types";
+import type { CreatePostData, Post, PostsResponse, UpdatePostData } from "../types/posts.types";
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 

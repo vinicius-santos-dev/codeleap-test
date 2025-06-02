@@ -5,7 +5,7 @@ import MainScreen from "./features/posts/MainScreen";
 function App() {
   const { userName } = useUsername();
 
-  return <>{userName ? <MainScreen /> : <SignupModal />}</>;
+  return userName ? <MainScreen /> : <SignupModal />;
 }
 
 export default App;

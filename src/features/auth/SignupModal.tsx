@@ -5,8 +5,7 @@ import Modal from "../../components/Modal";
 import useUsername from "./hooks/useUsername";
 
 const SignupModal = () => {
-  const { saveUserName } = useUsername();
-  const [isOpen, setIsOpen] = useState(true);
+  const { userName, saveUserName } = useUsername();
   const [inputValue, setInputValue] = useState("");
 
   const isInputValid = inputValue.trim().length > 0;
@@ -16,20 +15,17 @@ const SignupModal = () => {
 
     const trimmedValue = inputValue.trim();
 
-    if (trimmedValue) {
-      saveUserName(trimmedValue);
-
-      setIsOpen(false);
-      setInputValue("");
-    }
+    if (trimmedValue) saveUserName(trimmedValue);
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
 
+  if (userName) return null;
+
   return (
-    <Modal isOpen={isOpen}>
+    <Modal isOpen={true}>
       <h1 className="mb-6">Welcome to CodeLeap network!</h1>
 
       <form onSubmit={handleSubmit}>
