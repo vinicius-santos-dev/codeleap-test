@@ -1,11 +1,32 @@
+import { useState } from "react";
+import editIcon from "../../assets/edit.svg";
+import deleteIcon from "../../assets/trash.svg";
+import DeleteModal from "./DeleteModal";
+import EditModal from "./EditModal";
+
 const PostCard = () => {
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+
   return (
     <div className="rounded-2xl overflow-hidden flex flex-col">
       <div className="h-[70px] flex justify-between items-center bg-primary text-white w-full p-6">
         <h2>My First Post at CodeLeap Network!</h2>
 
-        {/* Actions */}
-        <div className=""></div>
+        <div className="flex items-center gap-6">
+          <img
+            src={deleteIcon}
+            alt="Delete"
+            className="cursor-pointer"
+            onClick={() => setShowDeleteModal(true)}
+          />
+          <img
+            src={editIcon}
+            alt="Edit"
+            className="cursor-pointer"
+            onClick={() => setShowEditModal(true)}
+          />
+        </div>
       </div>
 
       <div className="p-6 rounded-bl-2xl rounded-br-2xl border border-t-[#7695ec] border-[#999999]">
@@ -26,6 +47,16 @@ const PostCard = () => {
           lacus. Fusce a quam. Nullam vel sem. Nullam cursus lacinia erat.
         </p>
       </div>
+
+      <DeleteModal
+        isOpen={showDeleteModal}
+        onClose={() => setShowDeleteModal(false)}
+      />
+
+      <EditModal
+        isOpen={showEditModal}
+        onClose={() => setShowEditModal(false)}
+      />
     </div>
   );
 };
