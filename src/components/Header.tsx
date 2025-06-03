@@ -13,7 +13,7 @@ const Header = () => {
         <h1 className="text-white">CodeLeap Network</h1>
 
         <p
-          className="text-white cursor-pointer hover:font-bold"
+          className="relative text-white cursor-pointer after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-white after:transition-all hover:after:w-full hover:font-medium"
           onClick={handleLogout}
         >
           Logout
