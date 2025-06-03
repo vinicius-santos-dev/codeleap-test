@@ -1,5 +1,5 @@
 import SignupModal from "./features/auth/SignupModal";
-import { useUsername } from "./features/context/useAuth";
+import { useUsername } from "./features/auth/context/useAuth";
 import MainScreen from "./features/posts/MainScreen";
 
 function App() {

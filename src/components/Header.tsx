@@ -1,4 +1,4 @@
-import { useUsername } from "../features/context/useAuth";
+import { useUsername } from "../features/auth/context/useAuth";
 
 const Header = () => {
   const { clearUserName } = useUsername();
