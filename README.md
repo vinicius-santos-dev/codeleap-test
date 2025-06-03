@@ -1,54 +1,64 @@
-# React + TypeScript + Vite
+# CodeLeap Frontend Challenge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is my solution for the frontend technical test provided by CodeLeap.
 
-Currently, two official plugins are available:
+## Live demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+You can access the deployed version here:  
+https://codeleap-test-mauve.vercel.app
 
-## Expanding the ESLint configuration
+## Features implemented
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [x] Signup modal
+- [x] Username persistence via localStorage
+- [x] Logout functionality
+- [x] Create, update and delete posts using the provided API
+- [x] Posts are only editable/deletable by their author
+- [x] Responsive layout (mobile, tablet and desktop)
+- [x] Form validation (empty input blocking)
+- [x] Relative time for post creation (e.g. "about 2 hours ago")
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Username note
+
+As instructed, the username is stored locally in the frontend.  
+I used the following example usernames during development:
+
+- "Vinícius Santos"
+- "Jane Doe"
+- "John Doe"
+
+## Tech stack
+
+- React + Vite + TypeScript
+- TailwindCSS for styling
+- React Query for API handling
+- Context API for username state
+- date-fns for time formatting
+
+## Project structure
+
+This project follows a Feature-based architecture:
+
+```
+├── src
+│   ├── components # Shared UI components
+│   ├── features
+│   │   ├── auth # Signup modal and user handling
+│   │   │   ├── context # Global context (username)
+│   │   └── posts # Posts, create, edit and delete
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Environment variables
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+The backend base URL is set via a `.env` file:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```
+VITE_API_BASE_URL=https://dev.codeleap.co.uk/careers/
+```
+
+## Running locally
+
+```
+npm install
+npm run dev
 ```
